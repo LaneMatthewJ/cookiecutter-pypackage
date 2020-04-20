@@ -32,7 +32,15 @@
 Features
 --------
 
-* TODO
+{%- if cookiecutter.command_line_interface|lower == 'argh' %}
+
+{{ cookiecutter.project_name }} comes with a built in command line interface:
+
+.. code-block::
+
+    python -m {{ cookiecutter.project_slug }}.cli greet
+
+{%- endif %}
 
 Credits
 -------
