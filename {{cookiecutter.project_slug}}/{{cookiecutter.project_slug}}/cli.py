@@ -1,35 +1,20 @@
-"""Console script for {{cookiecutter.project_slug}}."""
+"""Command line interface for {{cookiecutter.project_slug}}."""
 
-{%- if cookiecutter.command_line_interface|lower == 'argparse' %}
-import argparse
-{%- endif %}
-import sys
-{%- if cookiecutter.command_line_interface|lower == 'click' %}
-import click
-{%- endif %}
+{%- if cookiecutter.command_line_interface|lower == 'argh' %}
+import argh
 
-{% if cookiecutter.command_line_interface|lower == 'click' %}
-@click.command()
+
+def greet() -> None:
+    r"""Say hello, {{ cookiecutter.project_slug }}"""
+    print(f'Hello, world!')
+
+
 def main():
-    """Console script for {{cookiecutter.project_slug}}."""
-    click.echo("Replace this message by putting your code into "
-               "{{cookiecutter.project_slug}}.cli.main")
-    click.echo("See click documentation at https://click.palletsprojects.com/")
-    return 0
-{%- endif %}
-{%- if cookiecutter.command_line_interface|lower == 'argparse' %}
-def main():
-    """Console script for {{cookiecutter.project_slug}}."""
-    parser = argparse.ArgumentParser()
-    parser.add_argument('_', nargs='*')
-    args = parser.parse_args()
-
-    print("Arguments: " + str(args._))
-    print("Replace this message by putting your code into "
-          "{{cookiecutter.project_slug}}.cli.main")
-    return 0
+    parser = argh.ArghParser()
+    parser.add_commands([greet])
+    parser.dispatch()
 {%- endif %}
 
 
-if __name__ == "__main__":
-    sys.exit(main())  # pragma: no cover
+if __name__=='__main__':
+    main()

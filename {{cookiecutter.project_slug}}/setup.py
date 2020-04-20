@@ -1,20 +1,29 @@
-#!/usr/bin/env python
-
-"""The setup script."""
-
 from setuptools import setup, find_packages
+
 
 with open('README.rst') as readme_file:
     readme = readme_file.read()
 
+
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [{%- if cookiecutter.command_line_interface|lower == 'click' %}'Click>=7.0',{%- endif %} ]
 
 setup_requirements = [{%- if cookiecutter.use_pytest == 'y' %}'pytest-runner',{%- endif %} ]
 
+
 test_requirements = [{%- if cookiecutter.use_pytest == 'y' %}'pytest>=3',{%- endif %} ]
+
+
+{%- if cookiecutter.command_line_interface|lower == 'argh' %}'
+requirements = ['argh',]
+
+
+COMMANDS = [
+    'greet = {{ cookiecutter.project_slug }}.cli:greet',
+]
+{%- endif %} 
+
 
 {%- set license_classifiers = {
     'MIT license': 'License :: OSI Approved :: MIT License',
@@ -43,11 +52,7 @@ setup(
     ],
     description="{{ cookiecutter.project_short_description }}",
     {%- if 'no' not in cookiecutter.command_line_interface|lower %}
-    entry_points={
-        'console_scripts': [
-            '{{ cookiecutter.project_slug }}={{ cookiecutter.project_slug }}.cli:main',
-        ],
-    },
+    entry_points={'console_scripts': COMMANDS},
     {%- endif %}
     install_requires=requirements,
 {%- if cookiecutter.open_source_license in license_classifiers %}
