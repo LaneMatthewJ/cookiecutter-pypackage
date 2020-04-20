@@ -15,7 +15,7 @@ setup_requirements = [{%- if cookiecutter.use_pytest == 'y' %}'pytest-runner',{%
 test_requirements = [{%- if cookiecutter.use_pytest == 'y' %}'pytest>=3',{%- endif %} ]
 
 
-{%- if cookiecutter.command_line_interface|lower == 'argh' %}'
+{%- if cookiecutter.command_line_interface|lower == 'argh' %}
 requirements = ['argh',]
 
 
