@@ -6,12 +6,10 @@
 {% if is_open_source %}
 
 [![Build Status](https://travis-ci.com/{{cookiecutter.github_username}}/{{cookiecutter.project_slug}}.svg?branch=master)](https://travis-ci.com/{{cookiecutter.github_username}}/{{cookiecutter.project_slug}})
-
+[![pypi](https://img.shields.io/pypi/v/{{cookiecutter.project_slug}}.svg)](https://pypi.python.org/pypi/{{cookiecutter.project_slug}})
 {%- endif %}
-
 {% if cookiecutter.add_pyup_badge == 'y' %}
 [![Updates](https://pyup.io/repos/github/{{cookiecutter.github_username}}/{{cookiecutter.project_slug}}/shield.svg)](https://pyup.io/repos/github/{{cookiecutter.github_username}}/{{cookiecutter.project_slug}}/)
-
 {% endif %}
 
 
