@@ -1,6 +1,6 @@
 {% set is_open_source = cookiecutter.open_source_license != 'Not open source' -%}
 
-<h1>{{ cookiecutter.project_name }}<img src='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/blob/master/img/snek.png' align='right' width='180' height='104'></h1>
+<h1>{{ cookiecutter.project_name }}<img src='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/blob/main/img/snek.png' align='right' width='180' height='104'></h1>
 
 
 {% if is_open_source %}
